@@ -24,8 +24,14 @@ class Fadao23Player extends Player
 
     public function calcul_proba(){
 
-      //echo ($this->result->getStatsFor($this->opponentSide)['scissors'] / $this->numbers_uses[1]);
-      //echo '\n';
+      /*
+      
+        The first Round rock is default
+        Until the 100th round :
+          The algorithm counts the previous moves of the opponent to determine if the opponent prefers playing one type of move over the others.
+        After the 100th round :
+          I tryed to know how much times the 'scissors', 'rock', 'paper' has been played and I play the opponent to win
+      */
 
       if ($this->result->getNbRound() == 0)
         return parent::rockChoice();

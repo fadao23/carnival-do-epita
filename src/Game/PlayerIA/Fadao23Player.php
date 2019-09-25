@@ -14,6 +14,44 @@ class Fadao23Player extends Player
     protected $mySide;
     protected $opponentSide;
     protected $result;
+    protected $bar;
+    protected $numbers_uses; // [rock, scissors, paper]
+
+    function __construct() {
+      $this->bar = array("rock");
+      $this->numbers_uses = array(0, 0, 0);
+    }
+
+    public function calcul_proba(){
+      $tmp = 0;
+      $index = 0;
+      foreach ($this->numbers_uses as $value){
+        if ($value > $tmp) {
+          $tmp = $value;
+          $index++;
+        }
+      }
+      
+      if ($index == 0)
+        return parent::rockChoice();
+      if ($index == 1)
+        return parent::scissorsChoice();
+      if ($index == 2)
+        return parent::paperChoice();
+    } 
+
+    public function fill_array_numbers(){
+      if ( $this->result->getLastChoiceFor($this->opponentSide) == "scissors"){
+        $this->numbers_uses[1] = $this->numbers_uses[1] + 1;
+      }
+      if ( $this->result->getLastChoiceFor($this->opponentSide) == "rock"){
+        $this->numbers_uses[0] = $this->numbers_uses[0] + 1;
+      }
+      if ( $this->result->getLastChoiceFor($this->opponentSide) == "paper"){
+        $this->numbers_uses[2] = $this->numbers_uses[2] + 1;
+      }
+    }
+
     public function getChoice()
     {
         // -------------------------------------    -----------------------------------------------------
@@ -39,8 +77,12 @@ class Fadao23Player extends Player
         // -------------------------------------    -----------------------------------------------------
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
-
-        return parent::rockChoice();
+        //echo $this->result->getLastChoiceFor($this->opponentSide);
+        //array_push($this->bar, $this->result->getLastChoiceFor($this->opponentSide));
+        //array_push($this->bar, $this->result->getLastChoiceFor($this->opponentSide) );
+        self::fill_array_numbers();
+        //print_r($this->numbers_uses);
+        return self::calcul_proba();
        // return parent::paperChoice();            
   }
 };

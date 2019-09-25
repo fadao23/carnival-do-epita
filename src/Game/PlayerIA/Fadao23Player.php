@@ -23,21 +23,16 @@ class Fadao23Player extends Player
     }
 
     public function calcul_proba(){
-      $tmp = 0;
-      $index = 0;
-      foreach ($this->numbers_uses as $value){
-        if ($value > $tmp) {
-          $tmp = $value;
-          $index++;
-        }
-      }
-      
-      if ($index == 0)
-        return parent::rockChoice();
-      if ($index == 1)
-        return parent::scissorsChoice();
-      if ($index == 2)
+
+      if ($this->numbers_uses[0] > $this->numbers_uses[2] && $this->numbers_uses[0] > $this->numbers_uses[1])
+      {
         return parent::paperChoice();
+      } elseif ($this->numbers_uses[2] > $this->numbers_uses[1] ) {
+        return parent::scissorsChoice();
+      } else {
+        return parent::rockChoice();
+      }
+
     } 
 
     public function fill_array_numbers(){

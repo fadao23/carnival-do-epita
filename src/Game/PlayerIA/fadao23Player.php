@@ -41,7 +41,7 @@ class Fadao23Player extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
         $this->prettyDisplay();
-        
-        return parent::paperChoice();            
+        return parent::rockChoice();
+       // return parent::paperChoice();            
   }
 };

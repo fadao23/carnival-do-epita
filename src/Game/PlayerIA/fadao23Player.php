@@ -14,7 +14,6 @@ class Fadao23Player extends Player
     protected $mySide;
     protected $opponentSide;
     protected $result;
-
     public function getChoice()
     {
         // -------------------------------------    -----------------------------------------------------
@@ -40,7 +39,7 @@ class Fadao23Player extends Player
         // -------------------------------------    -----------------------------------------------------
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
-        $this->prettyDisplay();
+
         return parent::rockChoice();
        // return parent::paperChoice();            
   }

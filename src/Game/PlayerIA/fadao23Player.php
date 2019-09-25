@@ -9,7 +9,7 @@ use Hackathon\Game\Result;
  * @author Robin
  *
  */
-class PaperPlayer extends Player
+class Fadao23Player extends Player
 {
     protected $mySide;
     protected $opponentSide;

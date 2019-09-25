@@ -9,7 +9,7 @@ use Hackathon\Game\Result;
  * @author Robin
  *
  */
-class fadao23Player extends Player
+class Fadao23Player extends Player
 {
     protected $mySide;
     protected $opponentSide;
@@ -27,7 +27,7 @@ class fadao23Player extends Player
         // How to get all the Choices          ?    $this->result->getChoicesFor($this->mySide)
         // How to get the opponent Last Choice ?    $this->result->getChoicesFor($this->opponentSide)
         // -------------------------------------    -----------------------------------------------------
-       // How to get my Last Score            ?    $this->result->getLastScoreFor($this->mySide)
+       // How to get my Last Score            ?     $this->result->getLastScoreFor($this->mySide)
         // How to get the opponent Last Score  ?    $this->result->getLastScoreFor($this->opponentSide)
         // -------------------------------------    -----------------------------------------------------
         // How to get the stats                ?    $this->result->getStats()
@@ -40,6 +40,7 @@ class fadao23Player extends Player
         // -------------------------------------    -----------------------------------------------------
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
+        $this->prettyDisplay();
         
         return parent::paperChoice();            
   }

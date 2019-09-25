@@ -18,11 +18,29 @@ class Fadao23Player extends Player
     protected $numbers_uses; // [rock, scissors, paper]
 
     function __construct() {
-      $this->bar = array("rock");
+      $this->bar = array(0 => 'rock', 1 => 'scissors', 2 => 'paper');
       $this->numbers_uses = array(0, 0, 0);
     }
 
     public function calcul_proba(){
+
+      //echo ($this->result->getStatsFor($this->opponentSide)['scissors'] / $this->numbers_uses[1]);
+      //echo '\n';
+
+      if ($this->result->getNbRound() == 0)
+        return parent::rockChoice();
+      else if ($this->result->getNbRound() > 100)
+      {
+        if (($this->result->getStatsFor($this->opponentSide)['scissors'] / $this->numbers_uses[1]) > 0.5){
+          return parent::rockChoice();
+        }
+        if (($this->result->getStatsFor($this->opponentSide)['rock'] / $this->numbers_uses[0]) > 0.5){
+          return parent::paperChoice();
+        }
+        if (($this->result->getStatsFor($this->opponentSide)['paper'] / $this->numbers_uses[2]) > 0.5){
+          return parent::scissorsChoice();
+        }
+      } 
 
       if ($this->numbers_uses[0] > $this->numbers_uses[2] && $this->numbers_uses[0] > $this->numbers_uses[1])
       {
@@ -75,6 +93,7 @@ class Fadao23Player extends Player
         //echo $this->result->getLastChoiceFor($this->opponentSide);
         //array_push($this->bar, $this->result->getLastChoiceFor($this->opponentSide));
         //array_push($this->bar, $this->result->getLastChoiceFor($this->opponentSide) );
+
         self::fill_array_numbers();
         //print_r($this->numbers_uses);
         return self::calcul_proba();
